@@ -1,0 +1,22 @@
+{
+    "name": "jberall/yii2-postal-code-validator",
+    "description": "Using Server side validation based on https://github.com/sirprize/postal-code-validator",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," postal code"," zip code"," validation"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan Berall",
+            "email": "jberall@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+		"sirprize/postal-code-validator":"dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "jberall\\postalcodevalidator\\": ""
+        }
+    }
+}
