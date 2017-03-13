@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-		"sirprize/postal-code-validator":"dev-master"
+		"sirprize/postal-code-validator":"*"
     },
     "autoload": {
         "psr-4": {
