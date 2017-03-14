@@ -11,8 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-		"sirprize/postal-code-validator":"*"
+        "php": ">=5.4.0"
     },
     "autoload": {
         "psr-4": {

@@ -32,12 +32,14 @@ trait TranslationTrait
      *
      * @return void
      */
-    public function initI18N($cat,$dir = '', $basePath = __NAMESPACE__)
+    public function initI18N($cat,$dir = '', $basePath = '')
     {
         if (empty($cat)) {
             return;
         }
-
+        if (empty($basePath)) {
+           $basePath = str_replace('\\', '/', __NAMESPACE__);
+        }
         if (empty($dir)) {
             $reflector = new \ReflectionClass(get_class($this));
             $dir = dirname($reflector->getFileName());

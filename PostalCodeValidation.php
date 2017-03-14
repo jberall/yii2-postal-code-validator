@@ -3,9 +3,6 @@ namespace jberall\postalcodevalidator;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\validators\Validator;
-use Sirprize\PostalCodeValidator\Validator as SirprizePCValidator;
-
-
 
 /**
  * PostalCodeValidation
@@ -18,12 +15,11 @@ use Sirprize\PostalCodeValidator\Validator as SirprizePCValidator;
 class PostalCodeValidation extends Validator
 {
     use TranslationTrait;
-
-    public $tCat;
     
     public function __construct() {
         $this->initI18N('jberall');
-//        Yii::$app->language = 'de';
+//        Yii::$app->language = 'fr';
+//        print_R(Yii::$app->i18n->translations);exit;
     }
     
     /**
@@ -34,23 +30,13 @@ class PostalCodeValidation extends Validator
      */
     public function validateAttribute($model, $attribute)
     {
-        $SirprizePCValidator = new SirprizePCValidator();
-        if ($SirprizePCValidator->hasCountry($model->country)) {
-            if (!$SirprizePCValidator->isValid($model->country, $model->$attribute, true)) {
-                
+
+////        \Yii::$app->getSession()->setFlash('error', 'Postal Code Warning' );
+        if ($this->hasCountry($model->country)) {
+            if (!$this->isValid($model->country, $model->$attribute, true)) {
                 $this->addError($model, $attribute,  Yii::t('jberall', '{pc} is not valid.',['pc'=>$model->$attribute]));
             }
-            echo 'has country ';
-        } else {
-            echo 'no country ';
-        }
-//        exit;
-////        \Yii::$app->getSession()->setFlash('error', 'Postal Code Warning' );
-//        if ($this->hasCountry($model->country)) {
-//            if (!$this->isValid($model->country, $model->$attribute, true)) {
-//                $this->addError($model, $attribute, $model->$attribute . Yii::t('app', ' is not a valid '.$model->attributeLabels()[$attribute].'.'));
-//            }
-//        }         
+        }         
     }    
     /*
      * country code: ISO 3166 2-letter code
