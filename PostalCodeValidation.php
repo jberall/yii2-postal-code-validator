@@ -16,12 +16,7 @@ class PostalCodeValidation extends Validator
 {
     use TranslationTrait;
     
-    public function __construct() {
-        $this->initI18N('jberall');
-//        Yii::$app->language = 'fr';
-//        print_R(Yii::$app->i18n->translations);exit;
-    }
-    
+
     /**
      * Only Validate When a country code exist
      * In the EntityInformation  postal_code is required and min 3.
@@ -30,11 +25,12 @@ class PostalCodeValidation extends Validator
      */
     public function validateAttribute($model, $attribute)
     {
+        
+        $this->initI18N('jberall-pcv');
 
-////        \Yii::$app->getSession()->setFlash('error', 'Postal Code Warning' );
         if ($this->hasCountry($model->country)) {
             if (!$this->isValid($model->country, $model->$attribute, true)) {
-                $this->addError($model, $attribute,  Yii::t('jberall', '{pc} is not valid.',['pc'=>$model->$attribute]));
+                $this->addError($model, $attribute,  Yii::t('jberall-pcv', '{pc} is not valid.',['pc'=>$model->$attribute]));
             }
         }         
     }    
