@@ -30,7 +30,7 @@ class PostalCodeValidation extends Validator
 
         if ($this->hasCountry($model->country)) {
             if (!$this->isValid($model->country, $model->$attribute, true)) {
-                $this->addError($model, $attribute,  Yii::t('jberall-pcv', '{pc} is not valid.',['pc'=>$model->$attribute]));
+				$this->addError($model, $attribute,  Yii::t('jberall-pcv', '{label} {pc} is not valid.',['pc'=>$model->$attribute, 'label'=>$model->getAttributeLabel($attribute)]));
             }
         }         
     }    
