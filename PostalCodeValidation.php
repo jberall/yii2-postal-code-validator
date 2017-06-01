@@ -26,11 +26,11 @@ class PostalCodeValidation extends Validator
     public function validateAttribute($model, $attribute)
     {
         
-        $this->initI18N('jberall-pcv');
+        // $this->initI18N('jberall-pcv');
 
         if ($this->hasCountry($model->country)) {
             if (!$this->isValid($model->country, $model->$attribute, true)) {
-				$this->addError($model, $attribute,  Yii::t('jberall-pcv', '{label} {pc} is not valid.',['pc'=>$model->$attribute, 'label'=>$model->getAttributeLabel($attribute)]));
+				$this->addError($model, $attribute,  Yii::t('app', '{label} {pc} is not valid.',['pc'=>$model->$attribute, 'label'=>$model->getAttributeLabel($attribute)]));
             }
         }         
     }    
